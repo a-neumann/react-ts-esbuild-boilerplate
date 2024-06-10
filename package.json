@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "minimal setup for react project written in typescript using esbuild for bundling",
   "scripts": {
-    "build": "tsx build.js",
-    "start": "tsx build.js serve",
-    "analyze": "tsx build.js --analyze",
+    "build": "tsx build.ts",
+    "start": "tsx build.ts serve",
+    "analyze": "tsx build.ts --analyze",
     "test": "jest"
   },
   "author": "",
