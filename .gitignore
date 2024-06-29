@@ -102,3 +102,5 @@ jspm_packages/
 
 # this project
 /build/*
+
+/src/__test__*

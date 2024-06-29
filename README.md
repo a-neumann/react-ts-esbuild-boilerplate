@@ -13,8 +13,8 @@
 - source maps and debug script for Visual Studio Code launching Firefox or Chrome supporting live-reload
 
 ## Motivation
-- lightweight setup, 12 dev dependencies
-- About 110MB dependencies instead of 310M in comparison to [Create React App](https://create-react-app.dev)
+- lightweight setup, 9 dev dependencies excluding types
+- About 83MB dependencies instead of 310M in comparison to [Create React App](https://create-react-app.dev)
 - plain template repository, easy to configure and extend
 
 ## Not included
