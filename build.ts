@@ -11,6 +11,8 @@ const analyze = argv.includes("--analyze");
 
 const sourcedir = "src";
 const outdir = "build";
+const htmlFileName = "index.html";
+const spaRouting = false;
 
 const entryPoints = [
     `${sourcedir}/index.tsx`,
@@ -30,6 +32,7 @@ const buildOptions: BuildOptions = {
     entryNames: "[name]-[hash]",
     chunkNames: "[name]-[hash]",
     outdir,
+    publicPath: "/",
     bundle: true,
     minify: !serveDev,
     sourcemap: true,
@@ -45,9 +48,9 @@ const buildOptions: BuildOptions = {
         htmlPlugin({
             files: [{
                 entryPoints,
-                filename: "index.html", 
+                filename: htmlFileName, 
                 scriptLoading: "module",
-                htmlTemplate: `${sourcedir}/index.html`,
+                htmlTemplate: `${sourcedir}/${htmlFileName}`,
                 define: env as {}
             }]
         })
@@ -76,7 +79,11 @@ const buildOptions: BuildOptions = {
         process.on("SIGTERM", terminate);
 
         await context.watch();
-        const { port } = await context.serve({ servedir: outdir, port: 8080 });
+        const { port } = await context.serve({
+            servedir: outdir,
+            port: 8080,
+            fallback: spaRouting ? `${outdir}/${htmlFileName}` : undefined
+        });
 
         console.info(`Server started on http://localhost:${port}`);
     
